@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import Prayer from "./components/prayer";
+import { StyleSheet, View, SafeAreaView, Text } from "react-native";
+import getGeoLocation from "./lib/location";
+const Separator = () => <View style={styles.separator} />;
 
-export default function App() {
+const location = getGeoLocation();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Prayer name="Sahour" time="05:00" />
+      <Prayer name="sobh" time="05:25" />
+      <Prayer name="Thohr" time="05:25" />
+      <Prayer name="Asr" time="05:25" />
+      <Prayer name="Maghreb" time="05:25" />
+      <Prayer name="Isha" time="05:25" />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    backgroundColor: "#70e000",
+  },
+  title: {
+    textAlign: "center",
+    marginVertical: 8,
+  },
+  view: {
+    flexDirection: "row",
+    justifyContent: "space-around", // Align items horizontally
   },
 });
+
+export default App;
